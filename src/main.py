@@ -4,7 +4,6 @@ from bot import bot, dp
 import app.middlewares as middlewares
 
 from app.database.models import async_main
-from app.database.requests import init_admins
 
 import asyncio
 import logging
@@ -15,7 +14,6 @@ from aiogram.types import BotCommandScopeDefault
 
 async def main():
     await async_main()
-    await init_admins()
 
     logging.basicConfig(level=logging.INFO)
 

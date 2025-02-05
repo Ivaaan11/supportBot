@@ -21,6 +21,13 @@ class User(Base):
     tickets: Mapped[list["Ticket"]] = relationship(back_populates="creator")
 
 
+class Admin(Base):
+    __tablename__ = 'admins'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    tg_id = mapped_column(BigInteger)
+
+
 class Ticket(Base):
     __tablename__ = 'tickets'
 
@@ -29,13 +36,6 @@ class Ticket(Base):
     creator_username: Mapped[str] = mapped_column(ForeignKey('users.username'))
 
     creator: Mapped["User"] = relationship(back_populates="tickets")
-
-
-class Admin(Base):
-    __tablename__ = 'admins'
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    tg_id = mapped_column(BigInteger)
 
 
 async def async_main():

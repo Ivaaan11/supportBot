@@ -1,16 +1,6 @@
 from app.database.models import async_session, User, Admin
-from app.utils import adminIDs
+from sqlalchemy import select
 
-from sqlalchemy import select, delete
-
-
-
-async def init_admins():
-    async with async_session() as session:
-        await session.execute(delete(Admin))
-        for adminID in adminIDs:
-            session.add(Admin(tg_id = adminID))
-        await session.commit()
 
 
 async def get_admins():
