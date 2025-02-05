@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: bot_template
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql+asyncpg://user:password@postgres:5432/db
+    volumes:
+      - .:/app
+    
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      
+volumes:
+  postgres_data:

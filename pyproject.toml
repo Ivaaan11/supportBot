@@ -1,0 +1,22 @@
+[project]
+name = "bottemplate"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Ivaaan11", email = "ivanlobacev787@gmail.com"}
+]
+requires-python = ">=3.12"
+
+dependencies = [
+    "aiogram == 3.17.0",
+    "sqlalchemy == 2.0.36",
+    "python-dotenv == 1.0.1",
+    "asyncpg (>=0.30.0,<0.31.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
