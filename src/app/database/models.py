@@ -21,6 +21,16 @@ class User(Base):
     tickets: Mapped[list["Ticket"]] = relationship(back_populates="creator")
 
 
+class Ticket(Base):
+    __tablename__ = 'tickets'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    text: Mapped[str] = mapped_column()
+    creator_username: Mapped[str] = mapped_column(ForeignKey('users.username'))
+
+    creator: Mapped["User"] = relationship(back_populates="tickets")
+
+
 class Admin(Base):
     __tablename__ = 'admins'
 
