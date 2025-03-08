@@ -3,6 +3,10 @@ from aiogram.types import BotCommand
 
 commands = [
     BotCommand(command = 'start', description = 'Start the bot'),
+
+    BotCommand(command = 'ticket', description = 'Create a new ticket'),
+    BotCommand(command = 'tickets', description = 'View your tickets'),
+
     BotCommand(command = 'menu', description = 'View the main menu'),
     BotCommand(command = 'help', description = 'View all the available commands'),
 ]
